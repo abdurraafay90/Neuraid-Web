@@ -5,10 +5,11 @@ import { useState, useEffect } from "react";
 
 const navLinks = [
   { name: "About", href: "#about" },
+  { name: "Problem", href: "#problem" },
   { name: "Features", href: "#features" },
-  { name: "How it Works", href: "#architecture" },
-  { name: "Tech Stack", href: "#tech-stack" },
-  { name: "Team & Contact", href: "#contact" },
+  { name: "Workflow", href: "#workflow" },
+  { name: "Architecture", href: "#architecture" },
+  { name: "Team", href: "#contact" },
 ];
 
 export default function Navbar() {
@@ -35,7 +36,7 @@ export default function Navbar() {
         <a href="#about" className="text-xl font-bold tracking-tighter hover:text-white/80 transition-colors">
           NEURAID<span className="text-white/40">.</span>
         </a>
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
             <a
               key={link.name}

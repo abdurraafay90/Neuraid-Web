@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { Terminal, Database, Brain, Cpu, Waves, Shield, ArrowRight } from "lucide-react";
+import Image from "next/image";
+import { Terminal, Database, Brain, Waves, Shield, ArrowRight } from "lucide-react";
 
 const logs = [
   "[Orchestrator] 🧠 Starting Personal Cognitive Memory Assistant...",
@@ -120,7 +121,7 @@ export default function Architecture() {
             {/* Step 1: Input (Headphones & GPS) */}
             <div className="flex flex-col items-center gap-4 w-full lg:w-1/4">
               <div className="relative w-32 h-32 flex items-center justify-center glass rounded-full overflow-hidden">
-                <img src="/Headphones.png" alt="Headphones" className="w-20 h-auto object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]" />
+                <Image src="/Headphones.png" alt="Headphones" width={2164} height={1876} className="w-20 h-auto object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]" />
               </div>
               <div className="text-center">
                 <div className="font-semibold text-sm">FBT-AS18 Headset</div>
@@ -128,7 +129,7 @@ export default function Architecture() {
               </div>
               {/* GPS Addon */}
               <div className="flex items-center gap-3 glass px-4 py-2 rounded-full mt-2">
-                 <img src="/GPS.png" alt="GPS" className="w-6 h-6 object-contain" />
+                 <Image src="/GPS.png" alt="GPS" width={2112} height={1850} className="w-6 h-6 object-contain" />
                  <div className="text-xs text-white/50">Geo-Metadata</div>
               </div>
             </div>
@@ -140,7 +141,7 @@ export default function Architecture() {
               {/* Central Processing Node */}
               <div className="relative w-48 h-48 flex items-center justify-center glass rounded-full overflow-hidden border-2 border-white/20 bg-white/5 shadow-[0_0_40px_rgba(255,255,255,0.05)]">
                 <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent animate-pulse" />
-                <img src="/PI.png" alt="Processing Unit" className="w-32 h-auto object-contain relative z-10 drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]" />
+                <Image src="/PI.png" alt="Processing Unit" width={2504} height={1560} className="w-32 h-auto object-contain relative z-10 drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]" />
               </div>
               
               {/* Logical Microservices inside the Core */}
@@ -169,7 +170,7 @@ export default function Architecture() {
             {/* Step 3: Output (Headphones TTS) */}
             <div className="flex flex-col items-center gap-4 w-full lg:w-1/4">
               <div className="relative w-32 h-32 flex items-center justify-center glass rounded-full overflow-hidden">
-                <img src="/Headphones.png" alt="Headphones" className="w-20 h-auto object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]" />
+                <Image src="/Headphones.png" alt="Headphones" width={2164} height={1876} className="w-20 h-auto object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]" />
               </div>
               <div className="text-center">
                 <div className="font-semibold text-sm">Piper TTS</div>

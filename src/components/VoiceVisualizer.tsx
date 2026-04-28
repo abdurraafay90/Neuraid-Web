@@ -2,6 +2,19 @@
 
 import { motion } from "framer-motion";
 
+const visualizerBars = Array.from({ length: 32 }, (_, i) => {
+  const distance = Math.abs(16 - i);
+  const minHeight = 15;
+  const maxHeight = 100 - distance * 5;
+  const variance = ((i * 17) % 11) / 10;
+
+  return {
+    height: Math.max(minHeight, maxHeight * (0.58 + variance * 0.36)),
+    duration: 0.42 + ((i * 7) % 8) * 0.06,
+    delay: ((i * 5) % 7) * 0.035,
+  };
+});
+
 export default function VoiceVisualizer() {
   return (
     <div className="relative flex items-center justify-center w-full h-full min-h-[400px] md:min-h-[500px] overflow-hidden">
@@ -26,30 +39,23 @@ export default function VoiceVisualizer() {
 
       {/* Active Audio Waveform Bars */}
       <div className="flex items-center gap-1.5 md:gap-2.5 z-10 h-32">
-        {[...Array(32)].map((_, i) => {
-          // Create a bell-curve effect so middle bars are taller than edge bars
-          const distance = Math.abs(16 - i);
-          const maxHeight = 100 - (distance * 5); 
-          const minHeight = 15;
-
-          return (
-            <motion.div
-              key={i}
-              animate={{
-                height: [`${minHeight}%`, `${Math.max(minHeight, Math.random() * maxHeight)}%`, `${minHeight}%`],
-                opacity: [0.5, 1, 0.5]
-              }}
-              transition={{
-                duration: Math.random() * 0.5 + 0.4,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: Math.random() * 0.2,
-              }}
-              className="w-1.5 md:w-2 bg-gradient-to-t from-green-500 to-white rounded-full drop-shadow-[0_0_10px_rgba(74,222,128,0.6)]"
-              style={{ height: "15%" }} // Initial fallback height
-            />
-          );
-        })}
+        {visualizerBars.map((bar, i) => (
+          <motion.div
+            key={i}
+            animate={{
+              height: ["15%", `${bar.height}%`, "15%"],
+              opacity: [0.5, 1, 0.5]
+            }}
+            transition={{
+              duration: bar.duration,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: bar.delay,
+            }}
+            className="w-1.5 md:w-2 bg-gradient-to-t from-green-500 to-white rounded-full drop-shadow-[0_0_10px_rgba(74,222,128,0.6)]"
+            style={{ height: "15%" }}
+          />
+        ))}
       </div>
 
       {/* Center Label */}

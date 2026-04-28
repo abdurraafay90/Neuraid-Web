@@ -15,8 +15,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "NEURAID | Your Photographic Audio Memory",
-  description: "A local, edge-computing personal memory assistant.",
+  title: "NEURAID | Personal Cognitive Memory Assistant",
+  description:
+    "A final-year project website for NEURAID, a local-first voice memory assistant for private conversation recall.",
+  openGraph: {
+    title: "NEURAID | Personal Cognitive Memory Assistant",
+    description:
+      "Explore NEURAID's problem statement, workflow, edge architecture, privacy model, results, and future scope.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({

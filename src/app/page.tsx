@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import ProjectDetails from "@/components/ProjectDetails";
 import Overview from "@/components/Overview";
 import TechStack from "@/components/TechStack";
 import Architecture from "@/components/Architecture";
@@ -10,6 +11,7 @@ export default function Home() {
     <main className="min-h-screen bg-black text-white selection:bg-white/30 selection:text-white">
       <Navbar />
       <Hero />
+      <ProjectDetails />
       <Overview />
       <Architecture />
       <Team />
