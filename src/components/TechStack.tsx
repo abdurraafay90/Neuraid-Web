@@ -18,10 +18,10 @@ export default function TechStack() {
   const duplicatedTech = [...technologies, ...technologies];
 
   return (
-    <section id="tech-stack" className="py-24 bg-black text-white border-t border-white/5 overflow-hidden">
+    <section id="tech-stack" className="py-24 bg-[#050507] text-white border-t border-white/10 overflow-hidden">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-sm font-mono text-white/40 tracking-widest uppercase mb-4">
+          <h2 className="text-sm font-mono text-white/40 uppercase mb-4">
             Powered by the Edge
           </h2>
         </div>
@@ -29,8 +29,8 @@ export default function TechStack() {
 
       <div className="relative flex overflow-x-hidden group py-4">
         {/* Left and Right Fade Overlays */}
-        <div className="absolute inset-y-0 left-0 w-24 md:w-48 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none" />
-        <div className="absolute inset-y-0 right-0 w-24 md:w-48 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 left-0 w-24 md:w-48 bg-gradient-to-r from-[#050507] to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-24 md:w-48 bg-gradient-to-l from-[#050507] to-transparent z-10 pointer-events-none" />
         
         <motion.div
           className="flex whitespace-nowrap gap-6 px-3"

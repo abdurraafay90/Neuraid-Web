@@ -59,7 +59,7 @@ const itemVariants: Variants = {
 
 export default function Overview() {
   return (
-    <section id="features" className="relative py-32 px-6 bg-black text-white">
+    <section id="features" className="relative py-32 px-6 bg-[#050507] text-white">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -68,7 +68,7 @@ export default function Overview() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-center mb-20"
         >
-          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60 mb-6">
+          <h2 className="text-3xl md:text-5xl font-semibold text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60 mb-6">
             A Second Brain, Completely Offline.
           </h2>
           <p className="text-white/50 max-w-2xl mx-auto text-lg">

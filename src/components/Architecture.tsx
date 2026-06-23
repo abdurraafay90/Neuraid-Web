@@ -49,7 +49,7 @@ export default function Architecture() {
   }, []);
 
   return (
-    <section id="architecture" className="py-32 px-6 bg-black text-white overflow-hidden">
+    <section id="architecture" className="py-32 px-6 bg-[#050507] text-white overflow-hidden">
       <div className="max-w-6xl mx-auto flex flex-col gap-24">
         
         {/* Top: Explanation & Terminal */}
@@ -65,7 +65,7 @@ export default function Architecture() {
                 <Terminal className="w-3.5 h-3.5" />
                 SYSTEM_ARCHITECTURE
               </div>
-              <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60 mb-6">
+              <h2 className="text-3xl md:text-5xl font-semibold text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60 mb-6">
                 Multi-Threaded <br /> Edge Pipeline.
               </h2>
               <p className="text-white/50 text-lg leading-relaxed">
@@ -100,11 +100,11 @@ export default function Architecture() {
                 <div className="flex gap-1.5">
                   <div className="w-3 h-3 rounded-full bg-red-500/80" />
                   <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                  <div className="w-3 h-3 rounded-full bg-green-500/80" />
+                  <div className="w-3 h-3 rounded-full bg-emerald-300/80" />
                 </div>
                 <div className="ml-4 text-xs text-white/30">system@neuraid: ~/core</div>
               </div>
-              <div className="p-6 h-[400px] overflow-y-auto text-green-400/90 whitespace-pre-wrap flex flex-col justify-end">
+              <div className="p-6 h-[400px] overflow-y-auto text-cyan-200/90 whitespace-pre-wrap flex flex-col justify-end">
                 <div className="mt-auto">
                   {displayedLogs.map((log, index) => (
                     <motion.div key={index} initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} className="mb-1.5">
@@ -114,7 +114,7 @@ export default function Architecture() {
                   <motion.div
                     animate={{ opacity: [1, 0] }}
                     transition={{ repeat: Infinity, duration: 0.8 }}
-                    className="inline-block w-2 h-4 bg-green-400/90 ml-1 translate-y-1"
+                    className="inline-block w-2 h-4 bg-cyan-200/90 ml-1 translate-y-1"
                   />
                 </div>
               </div>
@@ -131,7 +131,7 @@ export default function Architecture() {
           className="relative w-full glass rounded-3xl p-8 md:p-12"
         >
           <div className="text-center mb-16">
-            <h3 className="text-xl font-medium tracking-tight">End-to-End Data Flow</h3>
+            <h3 className="text-xl font-medium">End-to-End Data Flow</h3>
             <p className="text-white/40 text-sm mt-2">From raw audio capture to synthesized response.</p>
           </div>
 
@@ -166,7 +166,7 @@ export default function Architecture() {
               {/* Logical Microservices inside the Core */}
               <div className="grid grid-cols-2 gap-4 w-full max-w-sm mt-4">
                 <div className="glass p-3 rounded-xl flex items-center gap-3 border-white/5">
-                  <Shield className="w-4 h-4 text-green-400" />
+                  <Shield className="w-4 h-4 text-emerald-300" />
                   <div className="text-left"><div className="text-xs font-bold">Resemblyzer</div><div className="text-[10px] text-white/40">Voice Auth</div></div>
                 </div>
                 <div className="glass p-3 rounded-xl flex items-center gap-3 border-white/5">

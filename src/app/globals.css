@@ -1,21 +1,24 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-background: #000000;
-  --color-foreground: #f5f5f7;
-  --color-card: rgba(20, 20, 20, 0.6);
-  --color-card-border: rgba(255, 255, 255, 0.1);
+  --color-background: #050507;
+  --color-foreground: #f7f7fb;
+  --color-card: rgba(14, 14, 20, 0.68);
+  --color-card-border: rgba(255, 255, 255, 0.12);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 :root {
-  --background: #000000;
-  --foreground: #f5f5f7;
+  --background: #050507;
+  --foreground: #f7f7fb;
 }
 
 body {
-  background: var(--background);
+  background:
+    linear-gradient(135deg, rgba(34, 211, 238, 0.08), transparent 28%),
+    linear-gradient(225deg, rgba(244, 114, 182, 0.08), transparent 30%),
+    var(--background);
   color: var(--foreground);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -31,4 +34,24 @@ body {
 
 .perspective-1000 {
   perspective: 1000px;
+}
+
+.animated-surface {
+  background-size: 160% 160%;
+  animation: surface-pan 18s ease-in-out infinite;
+}
+
+.scan-mask {
+  mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
+}
+
+@keyframes surface-pan {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
 }

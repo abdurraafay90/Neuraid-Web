@@ -21,7 +21,7 @@ export default function VoiceVisualizer() {
       <motion.div
         animate={{ opacity: [0.22, 0.38, 0.22] }}
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute inset-12 pointer-events-none bg-[linear-gradient(90deg,transparent,rgba(74,222,128,0.16),transparent)]"
+        className="absolute inset-12 pointer-events-none bg-[linear-gradient(90deg,transparent,rgba(34,211,238,0.16),rgba(244,114,182,0.12),transparent)]"
       />
 
       <motion.div
@@ -49,13 +49,13 @@ export default function VoiceVisualizer() {
               ease: "easeInOut",
               delay: bar.delay,
             }}
-            className="w-1.5 md:w-2 bg-gradient-to-t from-cyan-400 via-green-400 to-white rounded-full drop-shadow-[0_0_10px_rgba(74,222,128,0.6)]"
+            className="w-1.5 md:w-2 bg-gradient-to-t from-cyan-300 via-fuchsia-300 to-white rounded-full drop-shadow-[0_0_10px_rgba(34,211,238,0.5)]"
             style={{ height: "15%" }}
           />
         ))}
       </div>
 
-      <div className="absolute top-[65%] text-xs font-mono text-green-400/80 uppercase">
+      <div className="absolute top-[65%] text-xs font-mono text-cyan-200/80 uppercase">
         ACTIVE_LISTENING
       </div>
     </div>

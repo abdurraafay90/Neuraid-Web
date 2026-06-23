@@ -159,10 +159,10 @@ function SectionHeading({
 }) {
   return (
     <div className="max-w-3xl">
-      <div className="text-xs font-mono tracking-[0.24em] uppercase text-green-400/80 mb-4">
+      <div className="text-xs font-mono uppercase text-cyan-200/80 mb-4">
         {eyebrow}
       </div>
-      <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60">
+      <h2 className="text-3xl md:text-5xl font-semibold text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60">
         {title}
       </h2>
       {description ? (
@@ -177,7 +177,7 @@ function BulletList({ items }: { items: string[] }) {
     <ul className="space-y-3">
       {items.map((item) => (
         <li key={item} className="flex gap-3 text-sm leading-relaxed text-white/55">
-          <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-green-400/80" />
+          <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-cyan-200/80" />
           <span>{item}</span>
         </li>
       ))}
@@ -188,7 +188,7 @@ function BulletList({ items }: { items: string[] }) {
 export default function ProjectDetails() {
   return (
     <>
-      <section id="problem" className="relative py-28 px-6 bg-black text-white border-t border-white/5">
+      <section id="problem" className="relative py-28 px-6 bg-[#050507] text-white border-t border-white/10">
         <div className="max-w-6xl mx-auto grid lg:grid-cols-[0.9fr_1.1fr] gap-12 items-start">
           <SectionHeading
             eyebrow="Project Context"
@@ -217,7 +217,7 @@ export default function ProjectDetails() {
             <article className="glass rounded-3xl p-7 md:p-8">
               <div className="flex items-center gap-3 mb-5">
                 <div className="h-10 w-10 rounded-2xl bg-white/5 flex items-center justify-center">
-                  <Sparkles className="h-5 w-5 text-green-300" />
+                  <Sparkles className="h-5 w-5 text-fuchsia-300" />
                 </div>
                 <h3 className="text-xl font-medium">Proposed Solution</h3>
               </div>
@@ -234,7 +234,7 @@ export default function ProjectDetails() {
         </div>
       </section>
 
-      <section id="use-cases" className="py-24 px-6 bg-black text-white">
+      <section id="use-cases" className="py-24 px-6 bg-[#050507] text-white">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-12">
             <SectionHeading
@@ -247,7 +247,7 @@ export default function ProjectDetails() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {useCases.map((item) => (
               <div key={item} className="glass rounded-2xl p-5 min-h-32 flex items-start gap-4">
-                <Mic className="h-5 w-5 text-green-400/80 shrink-0 mt-1" />
+                <Mic className="h-5 w-5 text-cyan-200/80 shrink-0 mt-1" />
                 <p className="text-sm text-white/60 leading-relaxed">{item}</p>
               </div>
             ))}
@@ -255,7 +255,7 @@ export default function ProjectDetails() {
         </div>
       </section>
 
-      <section id="workflow" className="py-28 px-6 bg-black text-white border-y border-white/5">
+      <section id="workflow" className="py-28 px-6 bg-[#050507] text-white border-y border-white/10">
         <div className="max-w-6xl mx-auto">
           <SectionHeading
             eyebrow="System Workflow"
@@ -276,7 +276,7 @@ export default function ProjectDetails() {
         </div>
       </section>
 
-      <section id="implementation" className="py-28 px-6 bg-black text-white">
+      <section id="implementation" className="py-28 px-6 bg-[#050507] text-white">
         <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-6">
           <article className="glass rounded-3xl p-7 md:p-8">
             <div className="flex items-center gap-3 mb-7">
@@ -284,7 +284,7 @@ export default function ProjectDetails() {
                 <Cpu className="h-5 w-5 text-blue-300" />
               </div>
               <div>
-                <div className="text-xs font-mono tracking-[0.2em] uppercase text-white/35">Hardware Setup</div>
+                <div className="text-xs font-mono uppercase text-white/35">Hardware Setup</div>
                 <h3 className="text-2xl font-medium mt-1">Edge prototype stack</h3>
               </div>
             </div>
@@ -297,7 +297,7 @@ export default function ProjectDetails() {
                 <Database className="h-5 w-5 text-purple-300" />
               </div>
               <div>
-                <div className="text-xs font-mono tracking-[0.2em] uppercase text-white/35">Software Architecture</div>
+                <div className="text-xs font-mono uppercase text-white/35">Software Architecture</div>
                 <h3 className="text-2xl font-medium mt-1">Local-first AI pipeline</h3>
               </div>
             </div>
@@ -306,7 +306,7 @@ export default function ProjectDetails() {
         </div>
       </section>
 
-      <section id="privacy" className="py-28 px-6 bg-black text-white border-y border-white/5">
+      <section id="privacy" className="py-28 px-6 bg-[#050507] text-white border-y border-white/10">
         <div className="max-w-6xl mx-auto grid lg:grid-cols-[0.9fr_1.1fr] gap-12">
           <SectionHeading
             eyebrow="Privacy & Security"
@@ -317,7 +317,7 @@ export default function ProjectDetails() {
           <div className="space-y-6">
             <div className="glass rounded-3xl p-7 md:p-8">
               <div className="flex items-center gap-3 mb-7">
-                <ShieldCheck className="h-6 w-6 text-green-300" />
+                <ShieldCheck className="h-6 w-6 text-emerald-300" />
                 <h3 className="text-xl font-medium">Privacy Features</h3>
               </div>
               <BulletList items={privacyFeatures} />
@@ -336,13 +336,13 @@ export default function ProjectDetails() {
         </div>
       </section>
 
-      <section id="results" className="py-28 px-6 bg-black text-white">
+      <section id="results" className="py-28 px-6 bg-[#050507] text-white">
         <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-6">
           <article className="glass rounded-3xl p-7 md:p-8">
             <div className="flex items-center gap-3 mb-7">
-              <Volume2 className="h-6 w-6 text-green-300" />
+              <Volume2 className="h-6 w-6 text-fuchsia-300" />
               <div>
-                <div className="text-xs font-mono tracking-[0.2em] uppercase text-white/35">Performance / Results</div>
+                <div className="text-xs font-mono uppercase text-white/35">Performance / Results</div>
                 <h3 className="text-2xl font-medium mt-1">Working prototype validation</h3>
               </div>
             </div>
@@ -359,7 +359,7 @@ export default function ProjectDetails() {
             <div className="flex items-center gap-3 mb-7">
               <MapPin className="h-6 w-6 text-blue-300" />
               <div>
-                <div className="text-xs font-mono tracking-[0.2em] uppercase text-white/35">Challenges Faced</div>
+                <div className="text-xs font-mono uppercase text-white/35">Challenges Faced</div>
                 <h3 className="text-2xl font-medium mt-1">Engineering constraints</h3>
               </div>
             </div>
@@ -368,7 +368,7 @@ export default function ProjectDetails() {
         </div>
       </section>
 
-      <section id="future-scope" className="py-28 px-6 bg-black text-white border-y border-white/5">
+      <section id="future-scope" className="py-28 px-6 bg-[#050507] text-white border-y border-white/10">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-[0.8fr_1.2fr] gap-12 items-start">
             <SectionHeading
@@ -379,7 +379,7 @@ export default function ProjectDetails() {
             <div className="grid sm:grid-cols-2 gap-4">
               {futureScope.map((item) => (
                 <div key={item} className="glass rounded-2xl p-5 flex gap-3">
-                  <RotateCcw className="h-4 w-4 text-green-400/80 shrink-0 mt-1" />
+                  <RotateCcw className="h-4 w-4 text-yellow-200/80 shrink-0 mt-1" />
                   <p className="text-sm leading-relaxed text-white/60">{item}</p>
                 </div>
               ))}
@@ -388,7 +388,7 @@ export default function ProjectDetails() {
         </div>
       </section>
 
-      <section id="faq" className="py-28 px-6 bg-black text-white">
+      <section id="faq" className="py-28 px-6 bg-[#050507] text-white">
         <div className="max-w-6xl mx-auto">
           <SectionHeading
             eyebrow="FAQ"
@@ -399,7 +399,7 @@ export default function ProjectDetails() {
             {faqs.map((faq) => (
               <article key={faq.question} className="glass rounded-2xl p-6">
                 <div className="flex gap-3 mb-4">
-                  <HelpCircle className="h-5 w-5 text-green-400/80 shrink-0 mt-0.5" />
+                  <HelpCircle className="h-5 w-5 text-cyan-200/80 shrink-0 mt-0.5" />
                   <h3 className="font-medium text-white/90">{faq.question}</h3>
                 </div>
                 <p className="text-sm leading-relaxed text-white/55">{faq.answer}</p>

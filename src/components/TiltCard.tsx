@@ -55,7 +55,7 @@ export default function TiltCard({ children, className }: { children: React.Reac
       {/* Subtle hover glow underneath */}
       <motion.div 
         style={{ transform: "translateZ(0px)" }}
-        className="absolute inset-0 z-0 bg-gradient-to-tr from-green-500/0 via-green-500/0 to-green-500/0 opacity-0 transition-opacity duration-300"
+        className="absolute inset-0 z-0 bg-gradient-to-tr from-cyan-500/0 via-fuchsia-500/0 to-yellow-300/0 opacity-0 transition-opacity duration-300"
       />
     </motion.div>
   );

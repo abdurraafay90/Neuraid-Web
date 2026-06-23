@@ -42,7 +42,7 @@ const teamMembers = [
 
 export default function Team() {
   return (
-    <section id="contact" className="py-24 px-6 bg-black text-white">
+    <section id="contact" className="py-24 px-6 bg-[#050507] text-white">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -51,7 +51,7 @@ export default function Team() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60 mb-6">
+          <h2 className="text-3xl md:text-5xl font-semibold text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60 mb-6">
             The Team Behind NEURAID
           </h2>
           <p className="text-white/50 text-lg">
@@ -109,7 +109,7 @@ export default function Team() {
               <GraduationCap className="w-6 h-6 text-white/80" />
             </div>
             <div>
-              <h4 className="text-xs font-mono text-white/40 tracking-widest uppercase mb-1">
+              <h4 className="text-xs font-mono text-white/40 uppercase mb-1">
                 Project Supervisor
               </h4>
               <h3 className="text-xl font-medium text-white/90">
