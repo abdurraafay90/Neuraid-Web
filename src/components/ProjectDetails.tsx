@@ -27,10 +27,10 @@ const workflow = [
   "Audio is captured from the headset or microphone.",
   "Speech activity is detected using voice activity detection.",
   "Meaningful audio segments are saved for processing.",
-  "Speech is transcribed into text.",
-  "Speakers are identified through diarization.",
+  "Audio segments are transcribed locally.",
+  "Owner and other speakers are attributed when speaker analysis is enabled.",
   "Transcript chunks are generated.",
-  "Text chunks are converted into embeddings.",
+  "Text chunks are converted into local GGUF embeddings.",
   "Memories are stored in ChromaDB with time and location metadata.",
   "The user asks a spoken query.",
   "Voice authentication verifies the enrolled owner.",
@@ -51,9 +51,9 @@ const hardware = [
 const software = [
   "Python backend for orchestration and processing.",
   "WebRTC VAD for speech activity detection.",
-  "OpenAI speech transcription and diarization for converting speech into structured text.",
+  "Local Distil-Whisper speech transcription for converting speech into text.",
   "Resemblyzer for voice authentication.",
-  "HuggingFace embeddings for semantic memory representation.",
+  "Local mxbai GGUF embeddings through llama.cpp for semantic memory representation.",
   "ChromaDB as the local vector database.",
   "Gemma 3 local LLM served through llama.cpp for answer generation.",
   "Piper TTS for local text-to-speech output.",
@@ -75,7 +75,7 @@ const results = [
   "Voice authentication prevents unknown users from accessing memory.",
   "Gemma 3 generates concise answers from retrieved memory context.",
   "Time and location metadata improve contextual recall.",
-  "The system can run on edge hardware, though latency depends on model size, network-based transcription, and audio processing load.",
+  "The system can run on edge hardware, though latency depends on model size and audio processing load.",
 ];
 
 const challenges = [
@@ -87,12 +87,12 @@ const challenges = [
   "Preventing the LLM from answering using general knowledge instead of stored memory.",
   "Managing Bluetooth headset controls for hands-free interaction.",
   "Adding contextual metadata such as time and location.",
-  "Balancing privacy with prototype transcription requirements.",
+  "Balancing privacy, consent, and useful long-term memory retention.",
   "Maintaining stable long-running background threads for listening and processing.",
 ];
 
 const futureScope = [
-  "Fully offline speech transcription and diarization.",
+  "Optional fully offline speaker diarization.",
   "Mobile application for memory browsing and control.",
   "Improved speaker identification.",
   "Multilingual conversation support.",
@@ -109,7 +109,7 @@ const faqs = [
   {
     question: "Does NEURAID upload audio to the cloud?",
     answer:
-      "The current prototype uses an external transcription API for speech-to-text and diarization. Memory storage, retrieval, local LLM response generation, and TTS are handled locally. A future version can replace cloud transcription with fully offline models.",
+      "The current prototype uses local speech-to-text on the device. Memory storage, retrieval, local LLM response generation, and TTS are handled locally.",
   },
   {
     question: "Can other people access my memories?",
@@ -124,7 +124,7 @@ const faqs = [
   {
     question: "Can NEURAID work offline?",
     answer:
-      "Partially. Local memory retrieval, ChromaDB, Gemma 3, and Piper TTS can work offline. The current prototype still requires internet access for transcription and diarization.",
+      "Local speech transcription, memory retrieval, ChromaDB, Gemma 3, and Piper TTS can work offline when the required models are already installed on the device.",
   },
   {
     question: "How much storage does it need?",
@@ -223,7 +223,7 @@ export default function ProjectDetails() {
               </div>
               <div className="space-y-4 text-white/55 leading-relaxed">
                 <p>
-                  NEURAID is a personal cognitive memory assistant designed to help users recall past conversations through voice. It listens for meaningful speech, transcribes conversations, identifies speakers, stores memories in a vector database, and allows the user to ask natural spoken questions later.
+                  NEURAID is a personal cognitive memory assistant designed to help users recall past conversations through voice. It listens for meaningful speech, transcribes conversations locally, stores memories in a vector database, and allows the user to ask natural spoken questions later.
                 </p>
                 <p>
                   When the user asks a question, NEURAID verifies the user&apos;s voice, retrieves relevant stored memories, generates a concise answer using a locally deployed Gemma language model, and speaks the response using text-to-speech.
@@ -329,7 +329,7 @@ export default function ProjectDetails() {
                 <h3 className="text-lg font-medium">Current Prototype Limitation</h3>
               </div>
               <p className="text-sm leading-relaxed text-white/60">
-                Speech transcription and diarization use an external API, so audio may be sent for processing during the prototype stage. A future version can improve privacy further by using fully offline speech-to-text and diarization models on-device.
+                Speech transcription now runs locally on the device. Speaker attribution is available for owner-versus-other labeling, while full multi-person diarization remains a future upgrade.
               </p>
             </div>
           </div>

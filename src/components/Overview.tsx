@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, Variants } from "framer-motion";
-import { Mic, Users, Search, Brain, Volume2, MapPin } from "lucide-react";
+import { Mic, Search, Brain, Volume2, MapPin, ShieldCheck, Waves } from "lucide-react";
 import TiltCard from "@/components/TiltCard";
 
 const features = [
@@ -11,9 +11,14 @@ const features = [
     icon: Mic,
   },
   {
-    title: "Speaker Diarization",
-    description: "Intelligently separates and tags different speakers in real-time to maintain perfect conversational context.",
-    icon: Users,
+    title: "Local Speech-to-Text",
+    description: "Distil-Whisper converts captured speech into searchable text directly on the edge device.",
+    icon: Waves,
+  },
+  {
+    title: "Owner-Gated Recall",
+    description: "Resemblyzer verifies the enrolled voice before private memories are retrieved or spoken back.",
+    icon: ShieldCheck,
   },
   {
     title: "Vector Retrieval (ChromaDB)",
@@ -80,8 +85,8 @@ export default function Overview() {
         >
           {features.map((feature, index) => (
             <motion.div key={index} variants={itemVariants} className="h-full">
-              <TiltCard className="glass p-8 rounded-3xl flex flex-col items-start group hover:bg-white/[0.02] transition-colors h-full cursor-none">
-                <div className="p-3 bg-white/5 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
+              <TiltCard className="glass p-8 rounded-lg flex flex-col items-start group hover:bg-white/[0.02] transition-colors h-full">
+                <div className="p-3 bg-white/5 rounded-lg mb-6 group-hover:scale-110 transition-transform duration-300">
                   <feature.icon className="w-6 h-6 text-white/80" />
                 </div>
                 <h3 className="text-xl font-medium mb-3">{feature.title}</h3>

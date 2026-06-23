@@ -7,7 +7,7 @@ import { Terminal, Database, Brain, Waves, Shield, ArrowRight } from "lucide-rea
 
 const logs = [
   "[Orchestrator] 🧠 Starting Personal Cognitive Memory Assistant...",
-  "[Pipeline] Initializing AI clients in background...",
+  "[Pipeline] Initializing local STT and vector clients in background...",
   "[Engine] Loading Voice Authentication...",
   "[Engine] Connecting to local LLM and ChromaDB...",
   "🚀 Booting up local LLM server on port 8000...",
@@ -23,6 +23,13 @@ const logs = [
   "🤖 Assistant: We decided on a sleek, Apple/OpenAI hardware aesthetic using Next.js and Tailwind.",
 ];
 
+const pipelineStages = [
+  { label: "Listen", detail: "Headset audio enters VAD and recorder workers." },
+  { label: "Transcribe", detail: "Distil-Whisper turns accepted segments into text." },
+  { label: "Remember", detail: "mxbai GGUF embeddings are stored in ChromaDB." },
+  { label: "Recall", detail: "Owner voice auth gates retrieval and Gemma-3 answers." },
+];
+
 export default function Architecture() {
   const [displayedLogs, setDisplayedLogs] = useState<string[]>([]);
 
@@ -30,7 +37,8 @@ export default function Architecture() {
     let currentIndex = 0;
     const interval = setInterval(() => {
       if (currentIndex < logs.length) {
-        setDisplayedLogs((prev) => [...prev, logs[currentIndex]]);
+        const cleanedLog = logs[currentIndex].replace(/[^\n\x20-\x7E]/g, "").trimStart();
+        setDisplayedLogs((prev) => [...prev, cleanedLog]);
         currentIndex++;
       } else {
         clearInterval(interval);
@@ -61,11 +69,22 @@ export default function Architecture() {
                 Multi-Threaded <br /> Edge Pipeline.
               </h2>
               <p className="text-white/50 text-lg leading-relaxed">
-                NEURAID operates completely independent of the cloud for retrieval. Audio is processed via dedicated background workers, embedded using HuggingFace models, and stored in a local ChromaDB instance. 
+                NEURAID operates completely independent of the cloud for retrieval. Audio is processed via dedicated background workers, embedded using a local mxbai GGUF model, and stored in a local ChromaDB instance.
               </p>
               <p className="text-white/50 text-lg leading-relaxed mt-4">
                 When queried, voice authentication verifies the owner before a local Gemma-3 LLM synthesizes the context and Piper TTS delivers the answer directly to the headset.
               </p>
+              <div className="grid sm:grid-cols-2 gap-3 mt-8">
+                {pipelineStages.map((stage, index) => (
+                  <div key={stage.label} className="glass rounded-lg p-4">
+                    <div className="text-[10px] font-mono text-white/35 mb-2">
+                      STAGE {String(index + 1).padStart(2, "0")}
+                    </div>
+                    <div className="text-sm font-semibold text-white/90">{stage.label}</div>
+                    <p className="text-xs leading-relaxed text-white/45 mt-1">{stage.detail}</p>
+                  </div>
+                ))}
+              </div>
             </motion.div>
           </div>
 
@@ -152,7 +171,7 @@ export default function Architecture() {
                 </div>
                 <div className="glass p-3 rounded-xl flex items-center gap-3 border-white/5">
                   <Waves className="w-4 h-4 text-blue-400" />
-                  <div className="text-left"><div className="text-xs font-bold">Whisper</div><div className="text-[10px] text-white/40">Diarization</div></div>
+                  <div className="text-left"><div className="text-xs font-bold">Distil-Whisper</div><div className="text-[10px] text-white/40">Local STT</div></div>
                 </div>
                 <div className="glass p-3 rounded-xl flex items-center gap-3 border-white/5">
                   <Database className="w-4 h-4 text-purple-400" />

@@ -21,11 +21,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Hide default cursor to let our custom cursor shine */
-a, button, [role="button"], input, textarea, select {
-  cursor: none;
-}
-
 /* Glassmorphism utility class */
 .glass {
   background: var(--color-card);

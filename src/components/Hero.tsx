@@ -1,34 +1,58 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mic, Brain, Lock } from "lucide-react";
+import Image from "next/image";
+import {
+  ArrowRight,
+  Brain,
+  Cpu,
+  Database,
+  Headphones,
+  Lock,
+  MapPin,
+  Mic,
+  ShieldCheck,
+} from "lucide-react";
 import VoiceVisualizer from "@/components/VoiceVisualizer";
+
+const signalCards = [
+  { label: "Capture", value: "FBT-AS18", icon: Headphones, accent: "text-cyan-300" },
+  { label: "STT", value: "Distil-Whisper", icon: Mic, accent: "text-green-300" },
+  { label: "Memory", value: "ChromaDB", icon: Database, accent: "text-purple-300" },
+  { label: "Recall", value: "Gemma-3", icon: Brain, accent: "text-yellow-300" },
+];
+
+const statLine = [
+  ["100%", "Local-first recall"],
+  ["Pi 5", "Edge target"],
+  ["Voice", "Owner gated"],
+  ["GPS", "Context tags"],
+];
 
 export default function Hero() {
   return (
-    <section id="about" className="relative min-h-screen flex flex-col items-center pt-32 pb-20 overflow-hidden bg-black text-white px-6">
-      {/* Background Subtle Glows */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-white/[0.03] rounded-full blur-[120px] pointer-events-none" />
+    <section id="about" className="relative min-h-[92vh] flex flex-col items-center pt-28 pb-14 overflow-hidden bg-black text-white px-6 border-b border-white/5">
+      <div className="absolute inset-0 pointer-events-none opacity-45 bg-[linear-gradient(rgba(255,255,255,0.045)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.045)_1px,transparent_1px)] bg-[size:72px_72px]" />
+      <div className="absolute inset-x-0 top-0 h-40 pointer-events-none bg-gradient-to-b from-white/[0.06] to-transparent" />
       
-      {/* Main Content */}
-      <div className="z-10 max-w-5xl mx-auto text-center space-y-8">
+      <div className="z-10 max-w-6xl mx-auto text-center space-y-8">
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass text-xs font-medium text-white/70 mb-4"
+          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg glass text-xs font-medium text-white/70 mb-2"
         >
           <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-          Always Listening. Locally Processed.
+          Private edge memory assistant
         </motion.div>
 
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-          className="text-5xl md:text-7xl lg:text-8xl font-semibold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-white/50"
+          className="text-5xl md:text-7xl lg:text-8xl font-semibold text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-white/45"
         >
-          Your Photographic <br /> Audio Memory.
+          Wearable Memory <br /> for Real Conversations.
         </motion.h1>
 
         <motion.p
@@ -37,7 +61,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           className="text-lg md:text-xl text-white/50 max-w-2xl mx-auto leading-relaxed font-light"
         >
-          NEURAID seamlessly records, transcribes, and locally embeds your entire day. Securely query your memories at the edge with zero cloud dependency.
+          NEURAID captures speech, enriches it with time and location, stores it locally, and lets the owner ask spoken questions against their own memory.
         </motion.p>
 
         <motion.div
@@ -46,44 +70,72 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6"
         >
-          <a href="#architecture" className="px-8 py-3.5 rounded-full bg-white text-black font-medium hover:bg-gray-200 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.3)] cursor-none">
-            View Architecture
+          <a href="#architecture" className="px-6 py-3 rounded-lg bg-white text-black font-medium hover:bg-gray-200 transition-colors shadow-[0_0_24px_rgba(255,255,255,0.24)] inline-flex items-center gap-2">
+            View Architecture <ArrowRight className="h-4 w-4" />
           </a>
-          <div className="px-8 py-3.5 rounded-full glass text-white font-medium flex items-center gap-2 cursor-none" title="All processing happens on-device">
+          <div className="px-6 py-3 rounded-lg glass text-white font-medium flex items-center gap-2" title="Query access is protected by owner voice verification">
             <Lock className="w-4 h-4" />
-            100% Private
+            Owner Verified
           </div>
         </motion.div>
       </div>
 
-      {/* Dynamic Voice Visualizer Mockup */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.2, delay: 0.5, ease: "easeOut" }}
-        className="mt-24 relative w-full max-w-5xl mx-auto rounded-[2rem] glass p-2 overflow-hidden shadow-2xl flex items-center justify-center min-h-[400px] md:min-h-[500px]"
+        className="mt-14 relative w-full max-w-6xl mx-auto rounded-lg glass overflow-hidden shadow-2xl min-h-[420px] md:min-h-[500px]"
       >
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10 pointer-events-none" />
-        
-        {/* Animated AI Audio Visualizer */}
+        <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(34,211,238,0.08),transparent_35%,rgba(168,85,247,0.08)_70%,transparent)] pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent z-10 pointer-events-none" />
+
         <VoiceVisualizer />
-        
-        {/* HUD Elements Overlay */}
-        <div className="absolute bottom-8 left-8 z-20 flex flex-col sm:flex-row gap-4">
-            <div className="glass px-4 py-3 rounded-xl flex items-center gap-3">
-              <Mic className="w-5 h-5 text-white/80" />
-              <div className="flex flex-col text-left">
-                <span className="text-[10px] text-white/50 font-mono tracking-wider">INPUT SOURCE</span>
-                <span className="text-sm font-medium">Capturing Context...</span>
+
+        <div className="absolute top-5 left-5 right-5 z-20 grid gap-3 md:grid-cols-4">
+          {signalCards.map((card) => (
+            <div key={card.label} className="glass rounded-lg px-4 py-3 flex items-center gap-3 min-w-0">
+              <card.icon className={`h-4 w-4 shrink-0 ${card.accent}`} />
+              <div className="min-w-0 text-left">
+                <div className="text-[10px] font-mono uppercase text-white/35">{card.label}</div>
+                <div className="text-sm font-medium truncate">{card.value}</div>
               </div>
             </div>
-            <div className="glass px-4 py-3 rounded-xl flex items-center gap-3">
-              <Brain className="w-5 h-5 text-white/80" />
-              <div className="flex flex-col text-left">
-                <span className="text-[10px] text-white/50 font-mono tracking-wider">LOCAL LLM</span>
-                <span className="text-sm font-medium">Gemma-3 Edge</span>
-              </div>
+          ))}
+        </div>
+
+        <div className="absolute left-5 bottom-5 z-20 hidden lg:flex items-end gap-4">
+          <div className="glass rounded-lg p-4 w-48">
+            <div className="text-[10px] font-mono uppercase text-white/35 mb-3">Hardware Node</div>
+            <Image src="/PI.png" alt="Raspberry Pi 5 processing board" width={2504} height={1560} className="w-full h-auto object-contain drop-shadow-[0_0_18px_rgba(255,255,255,0.18)]" />
+          </div>
+          <div className="glass rounded-lg p-4 w-36">
+            <div className="text-[10px] font-mono uppercase text-white/35 mb-3">Input</div>
+            <Image src="/Headphones.png" alt="Bluetooth headset" width={2164} height={1876} className="w-full h-auto object-contain drop-shadow-[0_0_18px_rgba(34,211,238,0.22)]" />
+          </div>
+        </div>
+
+        <div className="absolute right-5 bottom-5 z-20 grid grid-cols-2 gap-3 w-[min(420px,calc(100%-40px))]">
+          {statLine.map(([value, label]) => (
+            <div key={label} className="glass rounded-lg px-4 py-3 text-left">
+              <div className="text-xl font-semibold">{value}</div>
+              <div className="text-[10px] font-mono uppercase text-white/40 mt-1">{label}</div>
             </div>
+          ))}
+        </div>
+
+        <div className="absolute top-1/2 right-8 z-20 hidden xl:grid gap-3 -translate-y-1/2">
+          <div className="glass rounded-lg px-4 py-3 flex items-center gap-3">
+            <ShieldCheck className="h-4 w-4 text-green-300" />
+            <span className="text-xs text-white/70">Voice access gate</span>
+          </div>
+          <div className="glass rounded-lg px-4 py-3 flex items-center gap-3">
+            <MapPin className="h-4 w-4 text-blue-300" />
+            <span className="text-xs text-white/70">Location metadata</span>
+          </div>
+          <div className="glass rounded-lg px-4 py-3 flex items-center gap-3">
+            <Cpu className="h-4 w-4 text-yellow-300" />
+            <span className="text-xs text-white/70">Local inference</span>
+          </div>
         </div>
       </motion.div>
     </section>

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { User, GraduationCap } from "lucide-react";
+import { ExternalLink, User, GraduationCap } from "lucide-react";
 import TiltCard from "@/components/TiltCard";
 
 const teamMembers = [
@@ -65,7 +65,7 @@ export default function Team() {
               transition={{ delay: index * 0.1, duration: 0.5 }}
               className="h-full"
             >
-              <TiltCard className="glass p-6 rounded-3xl flex flex-col items-start group hover:bg-white/[0.05] transition-colors h-full cursor-none">
+              <TiltCard className="glass p-6 rounded-3xl flex flex-col items-start group hover:bg-white/[0.05] transition-colors h-full">
                 <div className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <User className="w-5 h-5 text-white/80" />
                 </div>
@@ -80,9 +80,10 @@ export default function Team() {
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-xs font-mono text-white/40 hover:text-white transition-colors cursor-none"
+                      className="text-xs font-mono text-white/40 hover:text-white transition-colors inline-flex items-center gap-1.5"
                     >
-                      {link.name} ↗
+                      {link.name}
+                      <ExternalLink className="h-3 w-3" />
                     </a>
                   ))}
                 </div>
@@ -99,7 +100,7 @@ export default function Team() {
           transition={{ delay: 0.4, duration: 0.5 }}
           className="h-full max-w-2xl mx-auto"
         >
-          <TiltCard className="glass p-6 md:p-8 rounded-3xl flex items-center gap-6 cursor-none w-full">
+          <TiltCard className="glass p-6 md:p-8 rounded-3xl flex items-center gap-6 w-full">
             <div className="w-14 h-14 bg-white/5 rounded-full flex items-center justify-center shrink-0">
               <GraduationCap className="w-6 h-6 text-white/80" />
             </div>
@@ -114,9 +115,10 @@ export default function Team() {
                 href="https://cis.neduet.edu.pk/dr-syed-abbas-ali-phd-approved-supervisor"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-white/50 hover:text-white transition-colors mt-1 inline-block cursor-none"
+                className="text-sm text-white/50 hover:text-white transition-colors mt-1 inline-flex items-center gap-1.5"
               >
-                Faculty Profile ↗
+                Faculty Profile
+                <ExternalLink className="h-3.5 w-3.5" />
               </a>
             </div>
           </TiltCard>

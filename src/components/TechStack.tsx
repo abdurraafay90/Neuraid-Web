@@ -6,8 +6,8 @@ const technologies = [
   { name: "Python", category: "Core Backend" },
   { name: "Gemma-3", category: "Local LLM" },
   { name: "ChromaDB", category: "Vector Storage" },
-  { name: "OpenAI Whisper", category: "Transcription" },
-  { name: "HuggingFace", category: "Embeddings" },
+  { name: "Distil-Whisper", category: "Local STT" },
+  { name: "mxbai GGUF", category: "Local Embeddings" },
   { name: "Piper", category: "Local TTS" },
   { name: "Resemblyzer", category: "Voice Auth" },
   { name: "Linux evdev", category: "Hardware I/O" },
@@ -33,7 +33,7 @@ export default function TechStack() {
         <div className="absolute inset-y-0 right-0 w-24 md:w-48 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
         
         <motion.div
-          className="flex whitespace-nowrap gap-6 px-3 cursor-none"
+          className="flex whitespace-nowrap gap-6 px-3"
           animate={{ x: ["0%", "-50%"] }}
           transition={{ ease: "linear", duration: 30, repeat: Infinity }}
         >
