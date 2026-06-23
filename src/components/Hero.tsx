@@ -7,6 +7,7 @@ import {
   Brain,
   Cpu,
   Database,
+  Download,
   Headphones,
   Lock,
   MapPin,
@@ -72,6 +73,13 @@ export default function Hero() {
         >
           <a href="#architecture" className="px-6 py-3 rounded-lg bg-white text-black font-medium hover:bg-gray-200 transition-colors shadow-[0_0_24px_rgba(255,255,255,0.24)] inline-flex items-center gap-2">
             View Architecture <ArrowRight className="h-4 w-4" />
+          </a>
+          <a
+            href="/NEURAID%20Report.pdf"
+            download
+            className="px-6 py-3 rounded-lg bg-cyan-300 text-black font-medium hover:bg-cyan-200 transition-colors shadow-[0_0_24px_rgba(34,211,238,0.22)] inline-flex items-center gap-2"
+          >
+            Download Report <Download className="h-4 w-4" />
           </a>
           <div className="px-6 py-3 rounded-lg glass text-white font-medium flex items-center gap-2" title="Query access is protected by owner voice verification">
             <Lock className="w-4 h-4" />

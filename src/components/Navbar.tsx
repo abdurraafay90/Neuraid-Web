@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useSpring } from "framer-motion";
 import { useState, useEffect } from "react";
+import { Download } from "lucide-react";
 
 const navLinks = [
   { name: "About", href: "#about" },
@@ -48,6 +49,14 @@ export default function Navbar() {
               {link.name}
             </a>
           ))}
+          <a
+            href="/NEURAID%20Report.pdf"
+            download
+            className="inline-flex items-center gap-1.5 rounded-lg border border-cyan-300/25 bg-cyan-300/10 px-3 py-1.5 text-sm font-medium text-cyan-100 hover:bg-cyan-300/18 transition-colors"
+          >
+            Report
+            <Download className="h-3.5 w-3.5" />
+          </a>
         </nav>
       </div>
       <motion.div
