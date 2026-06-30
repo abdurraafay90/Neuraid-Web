@@ -17,7 +17,7 @@ const visualizerBars = Array.from({ length: 32 }, (_, i) => {
 
 export default function VoiceVisualizer() {
   return (
-    <div className="relative flex items-center justify-center w-full h-full min-h-[400px] md:min-h-[500px] overflow-hidden">
+    <div className="relative flex items-center justify-center w-full h-full min-h-[240px] sm:min-h-[300px] md:min-h-[500px] overflow-hidden">
       <motion.div
         animate={{ opacity: [0.22, 0.38, 0.22] }}
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
@@ -27,15 +27,15 @@ export default function VoiceVisualizer() {
       <motion.div
         animate={{ rotate: 360 }}
         transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-        className="absolute w-[300px] h-[300px] md:w-[400px] md:h-[400px] rounded-full border border-white/10 border-dashed pointer-events-none"
+        className="absolute w-[240px] h-[240px] md:w-[400px] md:h-[400px] rounded-full border border-white/10 border-dashed pointer-events-none"
       />
       <motion.div
         animate={{ rotate: -360 }}
         transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-        className="absolute w-[400px] h-[400px] md:w-[550px] md:h-[550px] rounded-full border border-white/[0.03] border-dashed pointer-events-none"
+        className="absolute w-[320px] h-[320px] md:w-[550px] md:h-[550px] rounded-full border border-white/[0.03] border-dashed pointer-events-none"
       />
 
-      <div className="flex items-center gap-1.5 md:gap-2.5 z-10 h-32">
+      <div className="flex items-center gap-1 md:gap-2.5 z-10 h-24 md:h-32">
         {visualizerBars.map((bar, i) => (
           <motion.div
             key={i}

@@ -42,24 +42,24 @@ const teamMembers = [
 
 export default function Team() {
   return (
-    <section id="contact" className="py-24 px-6 bg-[#050507] text-white">
+    <section id="contact" className="py-16 md:py-24 px-4 sm:px-6 bg-[#050507] text-white">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
-          <h2 className="text-3xl md:text-5xl font-semibold text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60 mb-6">
+          <h2 className="text-2xl md:text-5xl font-semibold text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60 mb-4 md:mb-6">
             The Team Behind NEURAID
           </h2>
-          <p className="text-white/50 text-lg">
+          <p className="text-white/50 text-sm md:text-lg">
             Final Year Project Group
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6 mb-10 md:mb-16">
           {teamMembers.map((member, index) => (
             <motion.div
               key={member.name}
@@ -69,7 +69,7 @@ export default function Team() {
               transition={{ delay: index * 0.1, duration: 0.5 }}
               className="h-full"
             >
-              <TiltCard className="glass p-6 rounded-3xl flex flex-col items-start group hover:bg-white/[0.05] transition-colors h-full">
+              <TiltCard className="glass p-5 md:p-6 rounded-lg flex flex-col items-start group hover:bg-white/[0.05] transition-colors h-full">
                 <div className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <User className="w-5 h-5 text-white/80" />
                 </div>
@@ -104,7 +104,7 @@ export default function Team() {
           transition={{ delay: 0.4, duration: 0.5 }}
           className="h-full max-w-2xl mx-auto"
         >
-          <TiltCard className="glass p-6 md:p-8 rounded-3xl flex items-center gap-6 w-full">
+          <TiltCard className="glass p-5 md:p-8 rounded-lg flex flex-col sm:flex-row sm:items-center gap-4 md:gap-6 w-full">
             <div className="w-14 h-14 bg-white/5 rounded-full flex items-center justify-center shrink-0">
               <GraduationCap className="w-6 h-6 text-white/80" />
             </div>
@@ -117,7 +117,7 @@ export default function Team() {
               </h3>
               <a
                 href="mailto:saaj@neduet.edu.pk"
-                className="text-sm text-white/50 hover:text-white transition-colors mt-3 inline-flex items-center gap-1.5"
+                className="text-sm text-white/50 hover:text-white transition-colors mt-3 inline-flex items-center gap-1.5 break-all"
               >
                 saaj@neduet.edu.pk
                 <ExternalLink className="h-3.5 w-3.5" />

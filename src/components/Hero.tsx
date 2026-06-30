@@ -32,11 +32,11 @@ const statLine = [
 
 export default function Hero() {
   return (
-    <section id="about" className="relative min-h-[92vh] flex flex-col items-center pt-28 pb-14 overflow-hidden bg-[#050507] text-white px-6 border-b border-white/10">
+    <section id="about" className="relative min-h-[92vh] flex flex-col items-center pt-24 md:pt-28 pb-12 md:pb-14 overflow-hidden bg-[#050507] text-white px-4 sm:px-6 border-b border-white/10">
       <div className="absolute inset-0 pointer-events-none opacity-45 bg-[linear-gradient(rgba(255,255,255,0.045)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.045)_1px,transparent_1px)] bg-[size:72px_72px]" />
       <div className="absolute inset-x-0 top-0 h-56 pointer-events-none bg-[linear-gradient(110deg,rgba(34,211,238,0.14),transparent_34%,rgba(244,114,182,0.12)_70%,transparent)] animated-surface" />
       
-      <div className="z-10 max-w-6xl mx-auto text-center space-y-8">
+      <div className="z-10 max-w-6xl mx-auto text-center space-y-6 md:space-y-8">
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
@@ -51,7 +51,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-          className="text-5xl md:text-7xl lg:text-8xl font-semibold text-transparent bg-clip-text bg-[linear-gradient(180deg,#ffffff_0%,#e8fbff_42%,#f7b7ff_100%)]"
+          className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-semibold leading-[0.95] text-transparent bg-clip-text bg-[linear-gradient(180deg,#ffffff_0%,#e8fbff_42%,#f7b7ff_100%)]"
         >
           Wearable Memory <br /> for Real Conversations.
         </motion.h1>
@@ -60,28 +60,28 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="text-lg md:text-xl text-white/50 max-w-2xl mx-auto leading-relaxed font-light"
+          className="text-base md:text-xl text-white/55 max-w-2xl mx-auto leading-relaxed font-light"
         >
-          NEURAID captures speech, enriches it with time and location, stores it locally, and lets the owner ask spoken questions against their own memory.
+          A private wearable assistant that saves conversations locally and answers questions about them later.
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6"
+          className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 pt-4 md:pt-6 w-full sm:w-auto"
         >
-          <a href="#architecture" className="px-6 py-3 rounded-lg bg-white text-black font-medium hover:bg-gray-200 transition-colors shadow-[0_0_24px_rgba(255,255,255,0.24)] inline-flex items-center gap-2">
+          <a href="#architecture" className="px-5 py-3 rounded-lg bg-white text-black font-medium hover:bg-gray-200 transition-colors shadow-[0_0_24px_rgba(255,255,255,0.24)] inline-flex items-center justify-center gap-2">
             View Architecture <ArrowRight className="h-4 w-4" />
           </a>
           <a
             href="/NEURAID%20Report.pdf"
             download
-            className="px-6 py-3 rounded-lg bg-cyan-300 text-black font-medium hover:bg-cyan-200 transition-colors shadow-[0_0_24px_rgba(34,211,238,0.22)] inline-flex items-center gap-2"
+            className="px-5 py-3 rounded-lg bg-cyan-300 text-black font-medium hover:bg-cyan-200 transition-colors shadow-[0_0_24px_rgba(34,211,238,0.22)] inline-flex items-center justify-center gap-2"
           >
             Download Report <Download className="h-4 w-4" />
           </a>
-          <div className="px-6 py-3 rounded-lg glass text-white font-medium flex items-center gap-2" title="Query access is protected by owner voice verification">
+          <div className="px-5 py-3 rounded-lg glass text-white font-medium flex items-center justify-center gap-2" title="Query access is protected by owner voice verification">
             <Lock className="w-4 h-4" />
             Owner Verified
           </div>
@@ -92,16 +92,14 @@ export default function Hero() {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.2, delay: 0.5, ease: "easeOut" }}
-        className="mt-14 relative w-full max-w-6xl mx-auto rounded-lg glass overflow-hidden shadow-2xl min-h-[420px] md:min-h-[500px]"
+        className="mt-10 md:mt-14 relative w-full max-w-6xl mx-auto rounded-lg glass overflow-hidden shadow-2xl p-4 md:p-0 md:min-h-[500px]"
       >
         <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(34,211,238,0.13),transparent_35%,rgba(244,114,182,0.14)_70%,transparent)] pointer-events-none animated-surface" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#050507] via-[#050507]/10 to-transparent z-10 pointer-events-none" />
 
-        <VoiceVisualizer />
-
-        <div className="absolute top-5 left-5 right-5 z-20 grid gap-3 md:grid-cols-4">
+        <div className="relative md:absolute md:top-5 md:left-5 md:right-5 z-20 grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3">
           {signalCards.map((card) => (
-            <div key={card.label} className="glass rounded-lg px-4 py-3 flex items-center gap-3 min-w-0">
+            <div key={card.label} className="glass rounded-lg px-3 md:px-4 py-3 flex items-center gap-3 min-w-0">
               <card.icon className={`h-4 w-4 shrink-0 ${card.accent}`} />
               <div className="min-w-0 text-left">
                 <div className="text-[10px] font-mono uppercase text-white/35">{card.label}</div>
@@ -109,6 +107,10 @@ export default function Hero() {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="relative md:absolute md:inset-0 z-0 -mx-4 md:mx-0">
+          <VoiceVisualizer />
         </div>
 
         <div className="absolute left-5 bottom-5 z-20 hidden lg:flex items-end gap-4">
@@ -122,10 +124,10 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="absolute right-5 bottom-5 z-20 grid grid-cols-2 gap-3 w-[min(420px,calc(100%-40px))]">
+        <div className="relative md:absolute md:right-5 md:bottom-5 z-20 grid grid-cols-2 gap-2 md:gap-3 mt-2 md:mt-0 md:w-[min(420px,calc(100%-40px))]">
           {statLine.map(([value, label]) => (
-            <div key={label} className="glass rounded-lg px-4 py-3 text-left">
-              <div className="text-xl font-semibold">{value}</div>
+            <div key={label} className="glass rounded-lg px-3 md:px-4 py-3 text-left">
+              <div className="text-lg md:text-xl font-semibold">{value}</div>
               <div className="text-[10px] font-mono uppercase text-white/40 mt-1">{label}</div>
             </div>
           ))}

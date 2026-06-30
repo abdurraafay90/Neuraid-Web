@@ -18,9 +18,9 @@ export default function TechStack() {
   const duplicatedTech = [...technologies, ...technologies];
 
   return (
-    <section id="tech-stack" className="py-24 bg-[#050507] text-white border-t border-white/10 overflow-hidden">
+    <section id="tech-stack" className="py-16 md:py-24 bg-[#050507] text-white border-t border-white/10 overflow-hidden">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-8 md:mb-16">
           <h2 className="text-sm font-mono text-white/40 uppercase mb-4">
             Powered by the Edge
           </h2>
@@ -40,7 +40,7 @@ export default function TechStack() {
           {duplicatedTech.map((tech, index) => (
             <div
               key={index}
-              className="glass min-w-[240px] p-6 rounded-2xl flex flex-col items-center justify-center text-center hover:bg-white/[0.05] transition-colors shrink-0"
+              className="glass min-w-[190px] md:min-w-[240px] p-4 md:p-6 rounded-lg flex flex-col items-center justify-center text-center hover:bg-white/[0.05] transition-colors shrink-0"
             >
               <span className="text-lg font-medium text-white/90 mb-1">
                 {tech.name}

@@ -8,9 +8,9 @@ import { Brain, Fingerprint, Headphones, MapPin, MessageCircle, Radio, ShieldChe
 const reelSteps = [
   {
     kicker: "01 / Capture",
-    title: "A conversation becomes a memory stream.",
+    title: "Speech becomes memory.",
     description:
-      "The headset listens for useful speech, VAD cuts dead air, and the Pi starts shaping raw audio into searchable context.",
+      "The headset captures useful speech and skips dead air.",
     icon: Headphones,
     accent: "from-cyan-300 to-emerald-300",
     status: "ACTIVE_LISTENING",
@@ -18,9 +18,9 @@ const reelSteps = [
   },
   {
     kicker: "02 / Verify",
-    title: "Private recall starts with the owner voice.",
+    title: "Only the owner can ask.",
     description:
-      "Before a query can touch memory, the assistant checks the enrolled speaker and blocks unknown voices.",
+      "Voice verification gates private memory access.",
     icon: Fingerprint,
     accent: "from-emerald-300 to-yellow-200",
     status: "ACCESS_GRANTED",
@@ -28,9 +28,9 @@ const reelSteps = [
   },
   {
     kicker: "03 / Retrieve",
-    title: "The right moments surface from local storage.",
+    title: "Relevant moments surface.",
     description:
-      "Transcripts are embedded, ranked, and paired with time plus location metadata so answers stay grounded.",
+      "Local search finds the right stored conversation.",
     icon: Brain,
     accent: "from-fuchsia-300 to-cyan-300",
     status: "RAG_CONTEXT_READY",
@@ -38,9 +38,9 @@ const reelSteps = [
   },
   {
     kicker: "04 / Respond",
-    title: "The answer comes back through the headset.",
+    title: "The answer speaks back.",
     description:
-      "Gemma-3 synthesizes the retrieved evidence and Piper turns it into a spoken response without a cloud round trip.",
+      "Gemma-3 answers and Piper speaks it through the headset.",
     icon: Volume2,
     accent: "from-yellow-200 to-fuchsia-300",
     status: "SPOKEN_RESPONSE",
@@ -56,8 +56,8 @@ export default function ExperienceReel() {
     offset: ["start start", "end end"],
   });
   const progressHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
-  const deviceY = useTransform(scrollYProgress, [0, 1], [40, -40]);
-  const waveformScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.85, 1.12, 0.92]);
+  const deviceY = useTransform(scrollYProgress, [0, 1], [14, -14]);
+  const waveformScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.92, 1.04, 0.95]);
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     const nextStep = Math.min(reelSteps.length - 1, Math.floor(latest * reelSteps.length));
@@ -69,18 +69,18 @@ export default function ExperienceReel() {
 
   return (
     <section ref={ref} id="experience" className="relative bg-[#050507] text-white lg:h-[360vh]">
-      <div className="relative lg:sticky top-0 min-h-screen overflow-hidden px-6 py-28 flex items-center">
+      <div className="relative lg:sticky top-0 min-h-0 lg:min-h-screen overflow-hidden px-4 sm:px-6 py-16 md:py-24 lg:py-28 flex items-center">
         <div className="absolute inset-0 pointer-events-none opacity-60 bg-[linear-gradient(115deg,rgba(34,211,238,0.12),transparent_32%,rgba(244,114,182,0.12)_62%,transparent)] animated-surface" />
         <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:100%_54px] scan-mask" />
 
-        <div className="relative z-10 max-w-6xl mx-auto w-full grid lg:grid-cols-[0.9fr_1.1fr] gap-12 items-center">
-          <div className="space-y-8">
+        <div className="relative z-10 max-w-6xl mx-auto w-full grid lg:grid-cols-[0.9fr_1.1fr] gap-8 lg:gap-12 items-center">
+          <div className="space-y-6 md:space-y-8">
             <div className="inline-flex items-center gap-2 glass rounded-lg px-3 py-1.5 text-xs font-mono uppercase text-white/60">
               <Radio className="h-3.5 w-3.5 text-cyan-300" />
               Scroll the memory loop
             </div>
 
-            <div className="min-h-[280px]">
+            <div className="min-h-0 lg:min-h-[280px]">
               <motion.div
                 key={active.kicker}
                 initial={{ opacity: 0, y: 28, filter: "blur(8px)" }}
@@ -90,10 +90,10 @@ export default function ExperienceReel() {
                 <div className={`text-sm font-mono uppercase text-transparent bg-clip-text bg-gradient-to-r ${active.accent}`}>
                   {active.kicker}
                 </div>
-                <h2 className="mt-5 text-4xl md:text-6xl font-semibold leading-[0.95] text-white">
+                <h2 className="mt-4 text-3xl md:text-6xl font-semibold leading-[0.95] text-white">
                   {active.title}
                 </h2>
-                <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/55">
+                <p className="mt-4 max-w-xl text-sm md:text-lg leading-relaxed text-white/55">
                   {active.description}
                 </p>
               </motion.div>
@@ -106,18 +106,18 @@ export default function ExperienceReel() {
                   style={{ height: progressHeight }}
                 />
               </div>
-              <div className="grid gap-3">
+              <div className="grid gap-2 md:gap-3">
                 {reelSteps.map((step, index) => (
                   <button
                     key={step.title}
                     type="button"
                     onClick={() => setActiveStep(index)}
-                    className={`text-left rounded-lg px-4 py-3 transition-colors ${
+                    className={`text-left rounded-lg px-3 md:px-4 py-3 transition-colors ${
                       index === activeStep ? "bg-white/10 text-white" : "text-white/38 hover:bg-white/[0.04] hover:text-white/70"
                     }`}
                   >
                     <span className="text-xs font-mono uppercase">{step.kicker}</span>
-                    <span className="block text-sm mt-1">{step.title}</span>
+                    <span className="block text-xs md:text-sm mt-1">{step.title}</span>
                   </button>
                 ))}
               </div>
@@ -125,20 +125,20 @@ export default function ExperienceReel() {
           </div>
 
           <motion.div style={{ y: deviceY }} className="relative">
-            <div className="relative rounded-lg border border-white/12 bg-[#0b0b10]/90 p-4 shadow-[0_30px_100px_rgba(0,0,0,0.5)] overflow-hidden">
+            <div className="relative rounded-lg border border-white/12 bg-[#0b0b10]/90 p-3 md:p-4 shadow-[0_30px_100px_rgba(0,0,0,0.5)] overflow-hidden">
               <div className={`absolute inset-0 opacity-20 bg-gradient-to-br ${active.accent}`} />
-              <div className="relative rounded-lg border border-white/10 bg-[#050507]/55 min-h-[560px] overflow-hidden">
-                <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
+              <div className="relative rounded-lg border border-white/10 bg-[#050507]/55 min-h-0 md:min-h-[560px] overflow-hidden">
+                <div className="flex items-center justify-between border-b border-white/10 px-4 md:px-5 py-3 md:py-4">
                   <div className="flex items-center gap-2">
                     <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
                     <span className="h-2.5 w-2.5 rounded-full bg-yellow-300" />
                     <span className="h-2.5 w-2.5 rounded-full bg-emerald-300" />
                   </div>
-                  <div className="text-xs font-mono text-white/35">neuraid.live/session</div>
+                  <div className="text-[10px] md:text-xs font-mono text-white/35">neuraid.live/session</div>
                 </div>
 
-                <div className="grid md:grid-cols-[0.85fr_1.15fr] min-h-[510px]">
-                  <div className="border-r border-white/10 p-5 flex flex-col justify-between">
+                <div className="grid md:grid-cols-[0.85fr_1.15fr] min-h-0 md:min-h-[510px]">
+                  <div className="border-b md:border-b-0 md:border-r border-white/10 p-4 md:p-5 flex flex-col justify-between gap-5">
                     <div>
                       <div className="flex items-center gap-3 mb-5">
                         <div className={`h-11 w-11 rounded-lg bg-gradient-to-br ${active.accent} flex items-center justify-center text-black`}>
@@ -150,7 +150,7 @@ export default function ExperienceReel() {
                         </div>
                       </div>
 
-                      <div className="space-y-3">
+                      <div className="grid sm:grid-cols-3 md:grid-cols-1 gap-2 md:gap-3">
                         {active.chips.map((chip) => (
                           <div key={chip} className="glass rounded-lg px-4 py-3 flex items-center gap-3">
                             <ShieldCheck className="h-4 w-4 text-emerald-300" />
@@ -178,31 +178,31 @@ export default function ExperienceReel() {
                     </div>
                   </div>
 
-                  <div className="relative p-6 flex flex-col justify-between">
-                    <motion.div style={{ scale: waveformScale }} className="absolute inset-x-8 top-16 h-56 rounded-lg border border-white/10 bg-[#050507]/45 overflow-hidden">
+                  <div className="relative p-4 md:p-6 min-h-[360px] md:min-h-0 flex flex-col justify-between">
+                    <motion.div style={{ scale: waveformScale }} className="absolute inset-x-4 md:inset-x-8 top-6 md:top-16 h-36 md:h-56 rounded-lg border border-white/10 bg-[#050507]/45 overflow-hidden">
                       <div className="absolute inset-0 bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.12),transparent)] animated-surface" />
-                      <div className="absolute inset-0 flex items-center justify-center gap-2">
-                        {Array.from({ length: 28 }, (_, index) => (
+                      <div className="absolute inset-0 flex items-center justify-center gap-1 md:gap-2">
+                        {Array.from({ length: 22 }, (_, index) => (
                           <motion.span
                             key={index}
                             animate={{ height: ["18%", `${32 + ((index * 13) % 58)}%`, "18%"] }}
                             transition={{ duration: 0.6 + (index % 5) * 0.08, repeat: Infinity, ease: "easeInOut", delay: index * 0.025 }}
-                            className="w-1.5 rounded-full bg-gradient-to-t from-cyan-300 via-emerald-300 to-white"
+                            className="w-1 md:w-1.5 rounded-full bg-gradient-to-t from-cyan-300 via-emerald-300 to-white"
                           />
                         ))}
                       </div>
                     </motion.div>
 
-                    <div className="relative z-10 mt-auto grid gap-4">
+                    <div className="relative z-10 mt-auto grid gap-3 md:gap-4">
                       <motion.div
                         key={`${active.status}-query`}
                         initial={{ opacity: 0, x: 24 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.4 }}
-                        className="ml-auto max-w-[78%] rounded-lg bg-white text-black p-4"
+                        className="ml-auto max-w-[88%] md:max-w-[78%] rounded-lg bg-white text-black p-3 md:p-4 text-sm"
                       >
                         <div className="text-xs font-mono uppercase text-black/45 mb-2">Owner query</div>
-                        What did we decide about the final prototype?
+                        What did we decide?
                       </motion.div>
 
                       <motion.div
@@ -210,13 +210,13 @@ export default function ExperienceReel() {
                         initial={{ opacity: 0, x: -24 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.4, delay: 0.08 }}
-                        className="max-w-[82%] rounded-lg border border-white/10 bg-white/[0.06] p-4"
+                        className="max-w-[92%] md:max-w-[82%] rounded-lg border border-white/10 bg-white/[0.06] p-3 md:p-4 text-sm"
                       >
                         <div className="flex items-center gap-2 text-xs font-mono uppercase text-cyan-200 mb-2">
                           <MessageCircle className="h-3.5 w-3.5" />
                           Assistant
                         </div>
-                        Store conversations locally, verify the owner, retrieve from ChromaDB, and answer through Piper TTS.
+                        Store locally, verify the owner, retrieve memories, and speak back.
                       </motion.div>
                     </div>
                   </div>
